@@ -1,9 +1,7 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
 
-app=FastAPI(title="Cortex API")
+from app.routers import health
 
-@app.get("/health")
-def health():
-    return {"status": "ok"}
+app = FastAPI(title="Cortex API")
 
+app.include_router(health.router)
